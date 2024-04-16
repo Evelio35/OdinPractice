@@ -9,11 +9,12 @@
 
 <body>
 
-<!-- Rock Paper Scissors
-randomly return 1 of 3 choices 
-win or lose 
-track wins and loses
-best of 5 wins game
+<!-- Rock Paper Scissors Pseudo-code
+randomly return computers 1 of 3 choices [check]
+take users input(1 of 3 choices)         []
+output a win or lose                     []
+track wins and loses                     []
+best of 5 wins game                      []
  -->
 
     <script>
@@ -21,11 +22,46 @@ best of 5 wins game
 
         function getComputerChoice(){
             const choice = options[Math.floor(Math.random() * options.length)];
-            console.log(choice);
+            console.log("Computer's choice is: " + choice)
+            return choice;
+        }
+
+        function checkWinner(playerSelection, computerSelection){
+            if (playerSelection == computerSelection){
+                return "Tie"
+            }
+
+            else if (
+                (playerSelection == "Rock" && computerSelection == "Scissors") ||
+                (playerSelection == "Paper" && computerSelection == "Rock") ||
+                (playerSelection == "Scissors" && computerSelection == "Paper")
+            ){
+                return "Player"
+            }
+
+            else {
+                return "Computer"
+            }
 
         }
 
-        getComputerChoice()
+        function playRound(playerSelection, computerSelection){
+            const result = checkWinner(playerSelection, computerSelection);
+            if (result == "Tie"){
+                return "Its a Tie Monkey"
+            }
+            else if (result == "Player"){
+                return `You Win Monkey! ${playerSelection} beats ${computerSelection}`
+            }
+            else{
+                return  `You Lose Monkey! ${computerSelection} beats ${playerSelection}`
+            }
+           
+        }
+
+        const playerSelection = "Rock";
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection))
 
     </script>
     
