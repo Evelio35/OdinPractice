@@ -12,9 +12,9 @@
 <!-- Rock Paper Scissors Pseudo-code
 randomly return computers 1 of 3 choices [check]
 take users input(1 of 3 choices)         []
-output a win or lose                     []
+output a win or lose                     [check]
 track wins and loses                     []
-best of 5 wins game                      []
+best of 5 wins game                      [check]
  -->
 
     <script>
@@ -22,8 +22,23 @@ best of 5 wins game                      []
 
         function getComputerChoice(){
             const choice = options[Math.floor(Math.random() * options.length)];
-            console.log("Computer's choice is: " + choice)
             return choice;
+        }
+
+        function getPlayerChoice(){
+            let validatedInput = false;
+            while (validatedInput == false){
+                const choice = prompt("Choose Your Fate: Rock, Paper, or Scissors?");
+                if (choice == null){
+                    continue;
+                }
+                const choiceInLower = choice;
+                if (options.includes(choiceInLower)){
+                    validatedInput = true;
+                    return choiceInLower;
+                }
+            }
+            // include upper and lower case specifications
         }
 
         function checkWinner(playerSelection, computerSelection){
@@ -59,9 +74,15 @@ best of 5 wins game                      []
            
         }
 
-        const playerSelection = "Rock";
-        const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection))
+        function playGame(){
+            for (let i = 0; i < 5; i++){
+                const playerSelection = getPlayerChoice();
+                const computerSelection = getComputerChoice();
+                console.log(playRound(playerSelection, computerSelection))
+            }
+        }
+        playGame()
+
 
     </script>
     
