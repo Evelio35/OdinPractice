@@ -32,13 +32,12 @@ best of 5 wins game                      [check]
                 if (choice == null){
                     continue;
                 }
-                const choiceInLower = choice;
-                if (options.includes(choiceInLower)){
+                const choiceCaps = (choice.charAt(0).toUpperCase() + choice.slice(1).toLowerCase());
+                if (options.includes(choiceCaps)){
                     validatedInput = true;
-                    return choiceInLower;
+                    return choiceCaps;
                 }
             }
-            // include upper and lower case specifications
         }
 
         function checkWinner(playerSelection, computerSelection){
